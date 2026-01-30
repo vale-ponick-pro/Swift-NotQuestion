@@ -285,37 +285,42 @@ func task15() {
     print("   Большее: \(larger)")
     print("   Меньшее: \(smaller)")
     }
-    
+ 
+// utilities.swift - утилита для проверки года
+func isValidBirthYear(_ year: Int) -> Bool {
+    let currentYear = Calendar.current.component(.year, from: Date())
+    return year > 1900 && year <= currentYear
+}
+
 func task16() {
     // 1. ОПИСАНИЕ ЗАДАЧИ - Что делаем?
-    print("Запроси у юзера инфу ..")
+    print("Введите год рождения (от 1901 до текущего года):")
     
-    // 2. ВВОД + ПРОВЕРКИ - guard let данные
-   
-    
-    // 3. СТРУКТУРА/МОДЕЛЬ - struct/let константы
-    
-    
-    // 4. ЛОГИКА (создание объекта)
-    
-    
-    // 5. ВЫВОД - print(результат)
+    // 2. ВВОД ДАННЫХ - Optional Chaining и тернарный оператор
+      let result = readLine().flatMap { Int($0) }
+          .map { isValidBirthYear($0) ? "Thank you!" : "Can't be!" }
+          ?? "Can't be!" // Случай, когда ввод некорректен или пуст
+      
+      print(result)
 }
 func task17() {
-    // 1. ОПИСАНИЕ ЗАДАЧИ - Что делаем?
-    print("Запроси у юзера инфу ..")
+    print("Введите год рождения (от 1901 до текущего года):")
     
-    // 2. ВВОД + ПРОВЕРКИ - guard let данные
-   
+    let result = readLine()
+        .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+        .flatMap { trimmed -> Int? in
+            // Объединяем проверку на пустоту и преобразование в Int
+            guard !trimmed.isEmpty else { return nil }
+            return Int(trimmed)
+        }
+        .flatMap { year -> String? in
+            isValidBirthYear(year) ? "Thank you! Ваш год рождения: \(year)" : nil
+        }
+        ?? "Can't be!"
     
-    // 3. СТРУКТУРА/МОДЕЛЬ - struct/let константы
-    
-    
-    // 4. ЛОГИКА (создание объекта)
-    
-    
-    // 5. ВЫВОД - print(результат)
+    print(result)
 }
+
 func task18() {
     // 1. ОПИСАНИЕ ЗАДАЧИ - Что делаем?
     print("Запроси у юзера инфу ..")
