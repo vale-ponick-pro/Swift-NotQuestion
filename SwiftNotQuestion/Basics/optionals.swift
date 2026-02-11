@@ -74,7 +74,7 @@ public func task34() {
     
     let input = "21"
     
-    var age = Int(input) ?? 0 // 🔥 ?? = "если nil → используй значение по умолчанию"
+   let age = Int(input) ?? 0 // 🔥 ?? = "если nil → используй значение по умолчанию"
     
     print("Next year you will be \(age + 1) year old")
       pressEnterToContinue()

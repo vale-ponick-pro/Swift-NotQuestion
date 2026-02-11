@@ -13,7 +13,7 @@ public func runProgram() {
     while true {
         showMenu()
         
-        print("\nВаш выбор (0-30): ", terminator: "")
+        print("\nВаш выбор (0-37): ", terminator: "")
         guard let input = readLine(),
               let choice = Int(input) else {
             print("Пожалуйста, введите число!")
@@ -25,8 +25,8 @@ public func runProgram() {
             return
         }
         
-        if choice < 1 || choice > 30 {
-            print("Неверный выбор! Введите 0-30")
+        if choice < 1 || choice > 37 {
+            print("Неверный выбор! Введите 0-37")
             continue
         }
         
@@ -74,6 +74,13 @@ private func showMenu() {
     print("28 - Дни недели")
     print("29 - Дни недели")
     print("30 - Age user")
+    print("31 - Age user")
+    print("32 - Age user")
+    print("33 - Age user")
+    print("34 - Age user")
+    print("35 - Age user")
+    print("36 - Age user")
+    print("37 - Age user")
 }
 
 private func executeTask(_ number: Int) {
@@ -110,6 +117,13 @@ private func executeTask(_ number: Int) {
     case 28: task28()
     case 29: task29()
     case 30: task30()
+    case 31: task31()
+    case 32: task32()
+    case 33: task33()
+    case 34: task34()
+    case 35: task35()
+    case 36: task36()
+    case 37: task37()
     default:
         print("Неизвестная задача")
     }
