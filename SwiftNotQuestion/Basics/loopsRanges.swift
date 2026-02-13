@@ -195,3 +195,6 @@ public func task48() {
     pressEnterToContinue() // ✅ Пауза как в других задачах
 }
 
+public func task49() {
+    printHeader("Задача 49: While loop - user enters numbers until sum >= 100. Print final sum and count of inputs.")
+}
