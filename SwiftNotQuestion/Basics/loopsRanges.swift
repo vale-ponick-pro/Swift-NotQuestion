@@ -164,3 +164,34 @@ public func task47() {
         let letter = name.first
         print("First letter: \(letter.map { "\($0)" } ?? "none")")
 }
+
+public func task48() {
+    printHeader("Задача 48: Loop while - User: enter number and + sum. While sum < 100 -> code run. Print result.")
+    
+    var sum = 0
+    
+    while sum < 100 {
+        print("Current sum: \(sum). Need \(100 - sum) more.")
+        
+        // 1️⃣ Защита от неверного ввода
+        guard let number = safeIntInput(prompt: "Enter integer: ") else {
+            print("❌ Invalid input, try again.")
+            continue
+        }
+        // 2️⃣ Защита от отрицательных чисел (опционально)
+        guard number >= 1 else {
+            print("⚠️ Enter positive integer: ")
+            continue
+        }
+        sum += number
+        // 3️⃣ Красивый вывод
+        if sum >= 100 {
+            print("🎉 Goal reached! Sum: \(sum)")
+        } else {
+            print("✅ Current sum: \(sum)")
+        }
+    }
+    print("🔥 Final sum: \(sum)")
+    pressEnterToContinue() // ✅ Пауза как в других задачах
+}
+
