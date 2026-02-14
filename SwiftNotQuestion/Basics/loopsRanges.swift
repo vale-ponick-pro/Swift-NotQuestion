@@ -196,5 +196,49 @@ public func task48() {
 }
 
 public func task49() {
-    printHeader("Задача 49: While loop - user enters numbers until sum >= 100. Print final sum and count of inputs.")
+    printHeader("Задача 49: While loop - user enters numbers until sum >= 123. Print final sum and count of inputs.")
+
+var summa = 0 // создай свойство для хранения значения в памяти - ячейка
+var countInputs = 0 // ✅ Вынесено наружу — теперь счетчик считает все попытки
+    
+    while summa < 123 { // Изменено на <123: добавляем число, потом проверяем превышение
+        print("Current summa: \(summa). Need \(123 - summa) more.")
+        
+        guard let num = safeIntInput(prompt: "Enter integer: ") else {
+            print("❌ Invalid input, try again") // 1️⃣ защита от некорректного ввода
+            continue // оператор, команда управляющая потоком: НЕМЕДЛЕННО stop! текущую итерацию -> переход к следующей
+        }
+        
+        guard num >= 1 else { // уже есть свойство num => обращаемся к нему
+            print("⚠️ Enter positive integer: ") // 2️⃣ защита от отрицательных чисел
+            continue
+        }
+        
+        summa += num // обновляем значение свойства КАЖДый ввод юзера
+        countInputs += 1  // ✅ Инкремент только за валидные числа (счётчик вводов)
+        
+        print(summa >= 123 ? "🎉 Goal reached! Summa: \(summa)" : "✅ Current summa: \(summa)")
+    }
+    print("🔥 Final summa: \(summa). Count enters: \(countInputs). ") // ✅ Показывает реальное число
+    pressEnterToContinue() // ✅ Пауза как в других задачах
 }
+
+public func task50() {
+    printHeader("Задача 50: Birth year validation")
+    let currentYear = Calendar.current.component(.year, from: Date())
+    
+    while true {
+        let yearBirth = safeIntInput(prompt: "Birth year (1900-\(currentYear)): ")
+        
+        guard let year = yearBirth,
+              year >= 1900,
+              year <= currentYear else {
+            print("🔥 Not real! Enter again.")
+            continue
+        }
+        print("✅ Thanks!")
+        break
+    }
+    pressEnterToContinue()
+}
+
