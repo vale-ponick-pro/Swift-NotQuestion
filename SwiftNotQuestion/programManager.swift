@@ -13,7 +13,7 @@ public func runProgram() {
     while true {
         showMenu()
         
-        print("\nВаш выбор (0-37): ", terminator: "")
+        print("\nВаш выбор (0-54): ", terminator: "")
         guard let input = readLine(),
               let choice = Int(input) else {
             print("Пожалуйста, введите число!")
@@ -25,7 +25,7 @@ public func runProgram() {
             return
         }
         
-        if choice < 1 || choice > 37 {
+        if choice < 1 || choice > 54 {
             print("Неверный выбор! Введите 0-37")
             continue
         }
@@ -92,10 +92,15 @@ private func showMenu() {
     print("44 — Multiplication Table (Single Number)")
     print("45 — Multiplication Table (All Numbers)")
     print("46 — Product of Numbers Made of Ones")
+    print("46 — Product of Numbers Made of Ones")
     print("47 — User Info with Loop")
     print("48 — Sum of Numbers Until 100")
     print("49 — Sum of Numbers Until 123")
     print("50 — Birth Year Validation")
+    print("51 — Doors of Durin: Password 'mellon'")
+    print("52 — Doors of Durin: 5 Attempts Only")
+    print("53 — Sum Numbers 1 to 10 with While")
+    print("54 — Smart Alarm: Quiz with 3 Attempts")
 }
 
 private func executeTask(_ number: Int) {
@@ -152,6 +157,10 @@ private func executeTask(_ number: Int) {
     case 48: task48()
     case 49: task49()
     case 50: task50()
+    case 51: task51()
+    case 52: task52()
+    case 53: task53()
+    case 54: task54()
     default:
         print("Неизвестная задача")
     }

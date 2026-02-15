@@ -301,3 +301,66 @@ public func task53() {
     pressEnterToContinue()
 }
 
+public func task54() {
+    printHeader("Задача 54: ⏰ Smart Apple Watch - clock asks random questions until correct answer or 3 wrong attempts. If correct → 'Good morning! ☀️' and stops. If wrong → '5 more minutes...' and repeats. After 3 wrong → clock silent but '🚨 You are late! 🚨'. Questions and answers stored in dictionary.")
+    
+    // 1️⃣ Dictionary
+    let dict = [
+        "Your favorite programming language?" : "Swift",
+        "Class - what type?" : "reference",
+        "Struct - what type?" : "value",
+        "Keyword for variable in Swift?" : "var",
+        "Value representing absence?" : "nil",
+        "Data structure with key:value pairs?" : "dictionary",
+        "Let vs var — which is constant?" : "let",
+        "Optional type symbol?" : "?",
+        "What is Int?" : "type",
+        "Array index starts at?" : "0",
+        "Function keyword?" : "func",
+        "What is nil?" : "no value"
+    ]
+    
+    // 2️⃣ Array of questions
+    let keys = dict.keys
+    let questions = Array(keys)
+    
+    // 3️⃣ Random question
+    guard let randomQuestion = questions.randomElement() else {
+        print("Error! No question in dictionary")
+        return
+    }
+    
+    // 4️⃣ Correct answer from dictionary
+    guard let correctAnswer = dict[randomQuestion] else {
+        print("Error! No answer for this question")
+        return
+    }
+    
+    // 5️⃣ Counter setup
+    var wrongAttempts = 0
+    let maxAttempts = 3
+    
+    // 6️⃣ Main loop
+    while true {
+        // Get user's answer
+        let userAnswer = safeStringInput(prompt: randomQuestion)
+        
+        // Compare with correct answer
+        if userAnswer == correctAnswer {
+            print("Good morning! ☀️")
+            break
+        } else {
+            wrongAttempts += 1
+            
+            if wrongAttempts >= maxAttempts {
+                print("🚨 You are late! 🚨")
+                break
+            } else {
+                print("5 more minutes...")
+                // Loop continues
+            }
+        }
+    }
+    
+    pressEnterToContinue()
+}
